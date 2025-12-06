@@ -3,6 +3,7 @@ import config from "./config";
 import initDb from "./config/connectDb";
 import { userRoutes } from "./modules/users/users.routes";
 import { vehiclesRoutes } from "./modules/vehicles/vehicles.routes";
+import { authRoutes } from "./modules/auth/auth.routes";
 
 const app = express();
 app.use(express.json());
@@ -15,10 +16,14 @@ app.get("/", (req, res) => {
 });
 
 //users
-app.use("/api/v1/auth", userRoutes);
+app.use("/api/v1/auth", authRoutes);
+app.use("/api/v1/users", userRoutes);
 
 //vehicles
 app.use("/api/v1/vehicles", vehiclesRoutes);
+
+//bookings
+// app.use("/api/v1/bookings", )
 
 const port = config.port;
 app.listen(port, () => {

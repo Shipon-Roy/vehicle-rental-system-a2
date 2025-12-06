@@ -3,6 +3,8 @@ import { usersControllers } from "./users.controllers";
 
 const router = Router();
 
-router.post("/signup", usersControllers.userSignup);
+router.get("/", usersControllers.getAllUser);
+router.put("/:userId", usersControllers.userUpdate);
+router.delete("/:userId", usersControllers.userDelete);
 
 export const userRoutes = router;
